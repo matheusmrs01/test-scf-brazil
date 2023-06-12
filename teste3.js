@@ -1,15 +1,12 @@
 var data =  require("./fakeData");
 
 module.exports = function(req, res) {
-  
-    var name =  req.query.name;
+    let { id } =  req.query;
+    let user = data.find(user => user.id === parseInt(id));
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            data[i] = null;
-        }
+    if (user){
+        data.splice(data.indexOf(user), 1)
     }
 
-    res.send("success");
-
+    res.status(user ? 200 : 404).send(user ? { message: 'User removed successfully.' } : { message: 'User not found.' })
 };
