@@ -8,5 +8,5 @@ module.exports = function(req, res) {
         data.splice(data.indexOf(user), 1)
     }
 
-    res.status(user ? 200 : 404).send(user ? { message: 'User removed successfully.' } : { message: 'User not found.' })
+    res.status(user ? 200 : 404).send(user ? { message: 'User removed successfully.' } : { message: `User with id ${id} not found.` })
 };
