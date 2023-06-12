@@ -1,9 +1,8 @@
-
+var data =  require("./fakeData");
 
 module.exports = function(req, res){
-    
-    var name =  req.query.name;
+    let { name } =  req.query;
+    let users = data.filter(user => user.name.includes(name));
 
-    res.send("Usuário " +  name  + "  foi lido 0 vezes.");
-
+    res.send({ message: `Usuário ${name} foi lido ${users.length} vezes.` });
 };
